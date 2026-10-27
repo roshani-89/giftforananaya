@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>🎂 Happy Birthday! ✨ A Magical Surprise!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&family=Pacifico&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Animated Rainbow Background Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Floating Emoji Ribbon -->
+  <div class="emoji-ribbon" id="emojiRibbon"></div>
+
+  <!-- Top Controls -->
+  <div class="audio-control-bar">
+    <button class="music-disc-btn" id="musicToggleBtn">
+      <span class="disc-icon" id="discIcon">🎵</span>
+      <span class="music-text" id="musicStatusText">Music</span>
+    </button>
+    <button class="custom-edit-trigger" id="openSettingsBtn">⚙️ Customize</button>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Step Dots -->
+  <div class="steps-nav-dots" id="stepDots">
+    <span class="dot active" data-step="0">🎁</span>
+    <span class="dot" data-step="1">📸</span>
+    <span class="dot" data-step="2">🎂</span>
+    <span class="dot" data-step="3">💖</span>
+    <span class="dot" data-step="4">🎬</span>
+    <span class="dot" data-step="5">🏆</span>
+    <span class="dot" data-step="6">💌</span>
+    <span class="dot" data-step="7">🎉</span>
+  </div>
+
+  <main class="story-wrapper">
+
+    <!-- ===== STEP 0: SPLASH HERO ===== -->
+    <section class="step-card active rainbow-card" id="step-0">
+      <div class="rainbow-top-bar"></div>
+      <div class="step-content text-center">
+        <div class="floating-emojis-row">🎊 🎉 🥳 🎈 🎁 🎂 🌟 💖</div>
+        <div class="badge-pill pulse neon-badge">✨ Something Magical is Here ✨</div>
+
+        <!-- Hero Photo - big glowing circle -->
+        <div class="hero-photo-glow">
+          <div class="hero-ring ring1"></div>
+          <div class="hero-ring ring2"></div>
+          <div class="hero-ring ring3"></div>
+          <img src="img6.jpg" alt="Birthday Star" class="hero-photo" id="heroMainPhoto">
+          <div class="hero-crown">👑</div>
+        </div>
+
+        <h1 class="main-title rainbow-text">Happy Birthday<br><span class="name-flash" id="introPersonName">Bestie</span>!</h1>
+        <p class="subtitle glow-text">Your special day, your special website — made with all the love in the world! 💖</p>
+
+        <div class="gift-box-wrapper" id="giftBoxTrigger">
+          <div class="gift-box">
+            <div class="gift-lid"><div class="gift-ribbon-bow"></div></div>
+            <div class="gift-body">
+              <div class="gift-ribbon-v"></div>
+              <div class="gift-ribbon-h"></div>
+            </div>
+            <div class="gift-sparkles">
+              <span>✨</span><span>💖</span><span>🎉</span><span>⭐</span><span>🌟</span>
+            </div>
+          </div>
+          <p class="gift-tap-hint">👇 Tap the gift to begin the magic! 👇</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STEP 1: PHOTO SLIDESHOW ===== -->
+    <section class="step-card" id="step-1">
+      <div class="rainbow-top-bar" style="--bar-color: linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3,#54a0ff)"></div>
+      <div class="step-content text-center">
+        <div class="badge-pill" style="background:linear-gradient(135deg,#ff6b6b33,#feca5733);border-color:#feca57;color:#feca57;">📸 Your Beautiful Memories</div>
+        <h2 class="section-title">Look How Amazing You Are!</h2>
+        <p class="subtitle">Every photo tells your beautiful story 💫</p>
+
+        <!-- Auto Slideshow with real photos -->
+        <div class="slideshow-container">
+          <div class="slide-frame">
+            <!-- Slide 1: Pink Kurti (Previously on 1st page, now 1st image here!) -->
+            <div class="slide active-slide" data-idx="0">
+              <img src="img2.jpg" alt="Photo 1" class="slide-img" style="object-position:top center;">
+              <div class="slide-caption">That soft pink vibe fits you perfectly 🌸✨</div>
+            </div>
+            <!-- Slide 2: Mall Mirror Selfie (New upright photo - crystal clear face!) -->
+            <div class="slide" data-idx="1">
+              <img src="img7.png" alt="Photo 2" class="slide-img" style="object-position:top center;">
+              <div class="slide-caption">Always serving looks effortlessly! 😍🛍️</div>
+            </div>
+            <!-- Slide 3: Gold Dress -->
+            <div class="slide" data-idx="2">
+              <img src="img3.jpg" alt="Photo 3" class="slide-img" style="object-position:top center;">
+              <div class="slide-caption">Serving absolute QUEEN energy! 👑✨</div>
+            </div>
+            <!-- Slide 4: Black & White dress -->
+            <div class="slide" data-idx="3">
+              <img src="img4.jpg" alt="Photo 4" class="slide-img" style="object-position:top center;">
+              <div class="slide-caption">Classy &amp; stylish as always! 🖤🤍</div>
+            </div>
+          </div>
+          <div class="slide-controls">
+            <button class="slide-btn" id="prevSlideBtn">‹</button>
+            <div class="slide-dots-mini" id="slideMiniDots"></div>
+            <button class="slide-btn" id="nextSlideBtn">›</button>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bottom">
+        <button class="btn btn-back" onclick="goToStep(0)">⬅️ Back</button>
+        <button class="btn btn-next" onclick="goToStep(2)">🎂 Blow Candles ➡️</button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 2: CAKE ===== -->
+    <section class="step-card" id="step-2">
+      <div class="rainbow-top-bar" style="--bar-color: linear-gradient(90deg,#fd79a8,#fdcb6e,#e17055,#fd79a8)"></div>
+      <div class="step-content text-center">
+        <div class="badge-pill" style="background:#fd79a833;border-color:#fd79a8;color:#fd79a8;">🎂 Make A Wish!</div>
+        <h2 class="section-title">Blow Out Your Candles! 🕯️</h2>
+        <p class="subtitle">Close your eyes, make the sweetest wish, and blow out each candle!</p>
+
+        <div class="cake-stage">
+          <div class="cake-plate"></div>
+          <div class="cake-container" id="cakeContainer">
+            <div class="candles-rack" id="candlesRack">
+              <div class="candle" data-lit="true"><div class="flame"></div><div class="smoke"></div><div class="candle-stick c-pink"></div></div>
+              <div class="candle" data-lit="true"><div class="flame"></div><div class="smoke"></div><div class="candle-stick c-yellow"></div></div>
+              <div class="candle" data-lit="true"><div class="flame"></div><div class="smoke"></div><div class="candle-stick c-blue"></div></div>
+              <div class="candle" data-lit="true"><div class="flame"></div><div class="smoke"></div><div class="candle-stick c-green"></div></div>
+              <div class="candle" data-lit="true"><div class="flame"></div><div class="smoke"></div><div class="candle-stick c-purple"></div></div>
+            </div>
+            <div class="cake-tier tier-top">
+              <div class="frosting-drops"><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="strawberries">🍓 🌸 🍒 🌸 🍓</div>
+              <div class="cake-text-topper">Happy<br>Birthday!</div>
+            </div>
+            <div class="cake-tier tier-middle"></div>
+            <div class="cake-tier tier-bottom">
+              <div class="cake-icing-decoration"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cake-controls">
+          <button class="btn btn-blow" id="blowCandlesBtn">💨 Blow All Candles!</button>
+          <button class="btn btn-cut" id="cutCakeBtn" disabled>🎂 Cut The Cake!</button>
+        </div>
+        <div class="wish-bubble" id="wishStatusText">💡 Tap each candle to blow it out!</div>
+      </div>
+      <div class="nav-bottom">
+        <button class="btn btn-back" onclick="goToStep(1)">⬅️ Back</button>
+        <button class="btn btn-next hidden" id="step2NextBtn" onclick="goToStep(3)">📸 See Memories ➡️</button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 3: POLAROID GALLERY ===== -->
+    <section class="step-card" id="step-3">
+      <div class="rainbow-top-bar" style="--bar-color: linear-gradient(90deg,#a29bfe,#fd79a8,#fdcb6e,#55efc4)"></div>
+      <div class="step-content">
+        <div class="badge-pill text-center" style="background:#a29bfe33;border-color:#a29bfe;color:#a29bfe;">💖 Memory Lane</div>
+        <h2 class="section-title text-center">Flip The Photos! 🌟</h2>
+        <p class="subtitle text-center">Tap any photo to flip it & read the secret note behind! 💌</p>
+
+        <div class="polaroid-gallery">
+          <!-- Card 1: Flower in hair selfie (NEW img8) -->
+          <div class="polaroid-card" onclick="this.classList.toggle('flipped')" data-tilt>
+            <div class="polaroid-inner">
+              <div class="polaroid-front" style="--card-accent:#ff6b9d">
+                <div class="tape-strip" style="background:rgba(255,200,220,0.9)"></div>
+                <div class="photo-frame"><img src="img8.jpg" alt="Memory 1" class="polaroid-img" style="object-position:center 25%;"></div>
+                <div class="polaroid-caption">Flower Girl Vibes 🌸✨</div>
+              </div>
+              <div class="polaroid-back" style="background:linear-gradient(135deg,#fff0f5,#ffe4f0)">
+                <div class="note-paper">
+                  <h3>Sweetest Smile Ever! 🌸</h3>
+                  <p>That cute flower in your hair and that gentle smile! You bring so much calm, joy and warmth wherever you go. Pure angel energy!</p>
+                  <span class="heart-stamp" style="background:#ffd6e7;color:#e91e8c">🌸 Sunshine Soul</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="polaroid-card" onclick="this.classList.toggle('flipped')" data-tilt>
+            <div class="polaroid-inner">
+              <div class="polaroid-front" style="--card-accent:#feca57">
+                <div class="tape-strip" style="background:rgba(255,230,140,0.9)"></div>
+                <div class="photo-frame"><img src="img3.jpg" alt="Memory 2" class="polaroid-img"></div>
+                <div class="polaroid-caption">Gold Queen Era 👑✨</div>
+              </div>
+              <div class="polaroid-back" style="background:linear-gradient(135deg,#fff9e6,#fff3cc)">
+                <div class="note-paper">
+                  <h3>Dripping in Gold! 👑</h3>
+                  <p>You look like an absolute ROYALTY in this! That gold dress was made for you. Main character energy!</p>
+                  <span class="heart-stamp" style="background:#fff3cd;color:#e67e00">✨ Total Icon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="polaroid-card" onclick="this.classList.toggle('flipped')" data-tilt>
+            <div class="polaroid-inner">
+              <div class="polaroid-front" style="--card-accent:#a29bfe">
+                <div class="tape-strip" style="background:rgba(210,200,255,0.9)"></div>
+                <div class="photo-frame"><img src="img4.jpg" alt="Memory 3" class="polaroid-img"></div>
+                <div class="polaroid-caption">Classy Aesthetic 🖤🤍</div>
+              </div>
+              <div class="polaroid-back" style="background:linear-gradient(135deg,#f5f0ff,#ede8ff)">
+                <div class="note-paper">
+                  <h3>Effortlessly Chic! 🖤</h3>
+                  <p>Black & white but make it fashion! You have that rare ability to make every outfit look a million dollars!</p>
+                  <span class="heart-stamp" style="background:#e0e0ff;color:#5c35cc">💜 Style Icon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Pink kurti (soft & stunning) -->
+          <div class="polaroid-card" onclick="this.classList.toggle('flipped')" data-tilt>
+            <div class="polaroid-inner">
+              <div class="polaroid-front" style="--card-accent:#ff6b9d">
+                <div class="tape-strip" style="background:rgba(255,235,179,0.9)"></div>
+                <div class="photo-frame"><img src="img2.jpg" alt="Memory 4" class="polaroid-img" style="object-position:top center;"></div>
+                <div class="polaroid-caption">Soft &amp; Stunning 🌸</div>
+              </div>
+              <div class="polaroid-back" style="background:linear-gradient(135deg,#fff0f5,#ffe4f0)">
+                <div class="note-paper">
+                  <h3>You're beautiful! 💕</h3>
+                  <p>That subtle glow, that calm energy — you don't even try and you still look absolutely gorgeous!</p>
+                  <span class="heart-stamp" style="background:#ffd6e7;color:#e91e8c">💖 Natural Queen</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 (wide): Outdoor selfie with smile (NEW img9) -->
+          <div class="polaroid-card polaroid-wide" onclick="this.classList.toggle('flipped')">
+            <div class="polaroid-inner">
+              <div class="polaroid-front" style="--card-accent:#55efc4">
+                <div class="tape-strip" style="background:rgba(180,255,230,0.9)"></div>
+                <div class="photo-frame"><img src="img9.jpg" alt="Memory 5" class="polaroid-img" style="object-position:center 20%;"></div>
+                <div class="polaroid-caption">Breezy &amp; Beautiful 🌤️💫</div>
+              </div>
+              <div class="polaroid-back" style="background:linear-gradient(135deg,#e8fff8,#d0fff0)">
+                <div class="note-paper">
+                  <h3>Natural Beauty &amp; Warm Heart! 🌤️💖</h3>
+                  <p>That carefree vibe and that bright, genuine smile under the open sky! You make ordinary days feel like a celebration just by being yourself.</p>
+                  <span class="heart-stamp" style="background:#ccffe8;color:#00875a">✨ Pure Radiance</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="swipe-hint">✨ Tap any photo to flip & read the message!</p>
+      </div>
+      <div class="nav-bottom">
+        <button class="btn btn-back" onclick="goToStep(2)">⬅️ Back</button>
+        <button class="btn btn-next" onclick="goToStep(4)">🎬 Special Video ➡️</button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 4: SPECIAL VIDEO REEL ===== -->
+    <section class="step-card" id="step-4">
+      <div class="rainbow-top-bar" style="--bar-color: linear-gradient(90deg,#38bdf8,#ff4d8d,#ffbe3d,#00f5a0)"></div>
+      <div class="step-content text-center">
+        <div class="badge-pill" style="background:#38bdf833;border-color:#38bdf8;color:#38bdf8;">🎬 Step 4: Special Video Reel</div>
+        <h2 class="section-title">A Special Video Just For You 🍿✨</h2>
+        <p class="subtitle">Turn up your volume &amp; press play to watch this special tribute!</p>
+
+        <!-- Cinema Theater Frame -->
+        <div class="cinema-theater-box">
+          <div class="cinema-header-strip">
+            <span class="cinema-dot c-red"></span>
+            <span class="cinema-dot c-yellow"></span>
+            <span class="cinema-dot c-green"></span>
+            <span class="cinema-title-tag">✨ NOW STREAMING ✨</span>
+          </div>
+
+          <div class="video-player-wrapper">
+            <video id="birthdayVideo" controls playsinline preload="auto" poster="img8.jpg">
+              <source src="video.mp4" type="video/mp4">
+              <source src="WhatsApp%20Video%202026-10-27%20at%2010.24.31%20AM%20(1).mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Video Customizer Bar -->
+          <div class="video-custom-bar">
+            <label for="videoFileInput" class="btn btn-video-upload" title="Change or choose another video">
+              🔄 Change Video (Optional)
+            </label>
+            <input type="file" id="videoFileInput" accept="video/*" style="display: none;">
+            <p class="video-helper-text">🎬 Your special birthday video is permanently set! Hit play anytime!</p>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bottom">
+        <button class="btn btn-back" onclick="goToStep(3)">⬅️ Back to Photos</button>
+        <button class="btn btn-next" onclick="goToStep(5)">🏆 Unlock Awards ➡️</button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 5: SCRATCH & REVEAL ===== -->
+    <section class="step-card" id="step-5">
+      <div class="rainbow-top-bar" style="--bar-color: linear-gradient(90deg,#fdcb6e,#e17055,#fd79a8,#6c5ce7)"></div>
+      <div class="step-content text-center">
+        <div class="badge-pill" style="background:#fdcb6e33;border-color:#fdcb6e;color:#fdcb6e;">🏆 Official Birthday Honours</div>
+        <h2 class="section-title">Scratch &amp; Reveal Your Titles! 🎊</h2>
+        <p class="subtitle">Tap each mystery card to unlock your certified personality awards!</p>
+
+        <div class="scratch-grid">
+          <div class="mystery-card" onclick="revealCard(this)" style="--reveal-bg:linear-gradient(135deg,#ff6b6b,#feca57)">
+            <div class="mystery-cover"><span class="question-mark">👑</span><p>Tap to Reveal</p></div>
+            <div class="mystery-content">
+              <div class="award-emoji">✨</div>
+              <h3>Queen of Vibes</h3>
+              <p>Walks in, everyone's mood lifts. That's just your superpower!</p>
+            </div>
+          </div>
+          <div class="mystery-card" onclick="revealCard(this)" style="--reveal-bg:linear-gradient(135deg,#a29bfe,#fd79a8)">
+            <div class="mystery-cover"><span class="question-mark">🎭</span><p>Tap to Reveal</p></div>
+            <div class="mystery-content">
+              <div class="award-emoji">🎬</div>
+              <h3>Drama Academy Award</h3>
+              <p>Oscar-worthy reactions to even the tiniest daily situations. Legendary!</p>
+            </div>
+          </div>
+          <div class="mystery-card" onclick="revealCard(this)" style="--reveal-bg:linear-gradient(135deg,#55efc4,#0984e3)">
+            <div class="mystery-cover"><span class="question-mark">🍕</span><p>Tap to Reveal</p></div>
+            <div class="mystery-content">
+              <div class="award-emoji">🍕</div>
+              <h3>Supreme Foodie</h3>
+              <p>Can detect biryani from 5 km away. Never shares dessert. Respected.</p>
+            </div>
+          </div>
+          <div class="mystery-card" onclick="revealCard(this)" style="--reveal-bg:linear-gradient(135deg,#fdcb6e,#e17055)">
+            <div class="mystery-cover"><span class="question-mark">⏰</span><p>Tap to Reveal</p></div>
+            <div class="mystery-content">
+              <div class="award-emoji">⏰</div>
+              <h3>"5 Mins" Legend</h3>
+              <p>Still in bed but confidently says "Main aa rahi hoon!" Iconic energy!</p>
+            </div>
+          </div>
+          <div class="mystery-card" onclick="revealCard(this)" style="--reveal-bg:linear-gradient(135deg,#fd79a8,#6c5ce7)">
+            <div class="mystery-cover"><span class="question-mark">📱</span><p>Tap to Reveal</p></div>
+            <div class="mystery-content">
+              <div class="award-emoji">📸</div>
+              <h3>Photography Pro</h3>
+              <p>Takes 47 photos to get the perfect one. Worth it every single time!</p>
+            </div>
+          </div>
+          <div class="mystery-card" onclick="revealCard(this)" style="--reveal-bg:linear-gradient(135deg,#74b9ff,#55efc4)">
+            <div class="mystery-cover"><span class="question-mark">💖</span><p>Tap to Reveal</p></div>
+            <div class="mystery-content">
+              <div class="award-emoji">💖</div>
+              <h3>Heart of Pure Gold</h3>
+              <p>Always there for friends. Gives the best hugs. Pure 24-karat soul!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-bottom">
+        <button class="btn btn-back" onclick="goToStep(4)">⬅️ Back</button>
+        <button class="btn btn-next" onclick="goToStep(6)">💌 Read Letter ➡️</button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 6: WAX SEAL LETTER ===== -->
+    <section class="step-card" id="step-6">
+      <div class="rainbow-top-bar" style="--bar-color: linear-gradient(90deg,#fd79a8,#e17055,#fdcb6e)"></div>
+      <div class="step-content text-center">
+        <div class="badge-pill" style="background:#fd79a833;border-color:#fd79a8;color:#fd79a8;">💌 From the Heart</div>
+        <h2 class="section-title">A Letter Just For You 💕</h2>
+        <p class="subtitle">Tap the envelope to break the seal and read your special message!</p>
+
+        <div class="letter-stage">
+          <div class="envelope" id="envelopeWrapper" onclick="openEnvelope()">
+            <div class="envelope-flap" id="envelopeFlap">
+              <div class="wax-seal" id="waxSeal"><span>🎂</span></div>
+            </div>
+            <div class="envelope-pocket"></div>
+            <div class="letter-paper" id="letterPaper">
+              <div class="letter-header">
+                <span class="letter-date" id="letterDateDisplay">Your Special Day ✨</span>
+                <span class="letter-to" id="letterRecipient">Dear Birthday Star,</span>
+              </div>
+              <div class="letter-body" id="letterBodyText">
+                Happy Birthday, superstar! 🌟<br><br>
+                Today the world is a little brighter, a little more fun, and a lot more fabulous — because YOU were born on this day! 🎉<br><br>
+                You are the kind of person who walks into a room and instantly makes it better. Your laugh is contagious, your heart is pure gold, and your vibe is absolutely unmatched.<br><br>
+                On this beautiful birthday, I wish you all the happiness your heart can hold, all the adventures your soul craves, and all the success your dreams deserve. 🌸<br><br>
+                Stay exactly as amazing as you are. The world needs more of you! 💖
+              </div>
+              <div class="letter-signature" id="letterSign">
+                With all the love in the universe,<br>
+                <strong>Your Forever Friend ❤️</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="envelope-hint" id="envelopeHint">✉️ Click the envelope to open!</p>
+      </div>
+      <div class="nav-bottom">
+        <button class="btn btn-back" onclick="goToStep(5)">⬅️ Back</button>
+        <button class="btn btn-next" onclick="goToStep(7)">🎆 Grand Finale ➡️</button>
+      </div>
+    </section>
+
+    <!-- ===== STEP 7: GRAND FINALE ===== -->
+    <section class="step-card" id="step-7">
+      <div class="rainbow-top-bar rainbow-animated"></div>
+      <div class="step-content text-center finale-step">
+        <div class="badge-pill gold-glow pulse">🎊 The Grand Birthday Celebration 🎊</div>
+
+        <!-- Giant Photo Collage Finale -->
+        <div class="finale-collage">
+          <div class="collage-big"><img src="img3.jpg" alt="Star" class="collage-img" style="object-position:top center;"></div>
+          <div class="collage-small-stack">
+            <div class="collage-small"><img src="img2.jpg" alt="" class="collage-img" style="object-position:top center;"></div>
+            <div class="collage-small"><img src="img7.png" alt="" class="collage-img" style="object-position:center 20%;"></div>
+          </div>
+        </div>
+
+        <h1 class="finale-title">HAPPY BIRTHDAY<br><span class="highlight-name rainbow-text" id="finalePersonName">BESTIE</span>!</h1>
+        <p class="finale-sub">🎂 Another year more beautiful, more wise, more legendary! 🎂</p>
+
+        <!-- Age Counter Animation -->
+        <div class="age-counter-box">
+          <span class="age-label">Celebrating</span>
+          <span class="age-number" id="ageNumber">🎊</span>
+          <span class="age-label">of being absolutely fabulous!</span>
+        </div>
+
+        <!-- Lantern Wish -->
+        <div class="lantern-launcher-box">
+          <h3>🏮 Send A Wish Into The Sky! 🏮</h3>
+          <p>Type your birthday wish & watch it fly on a lantern!</p>
+          <div class="lantern-input-group">
+            <input type="text" id="lanternWishInput" placeholder="Your wish for this year..." maxlength="80">
+            <button class="btn btn-primary" id="launchLanternBtn">🏮 Launch!</button>
+          </div>
+        </div>
+        <div class="lantern-sky" id="lanternSky"></div>
+
+        <!-- Finale Buttons -->
+        <div class="finale-actions">
+          <button class="btn btn-sparkle" id="megaConfettiBtn">🎊 BLAST CONFETTI!</button>
+          <button class="btn btn-secondary" onclick="restartExperience()">🔄 Start Again</button>
+        </div>
+
+        <!-- Share Box -->
+        <div class="share-box">
+          <p>🔗 Share this birthday magic!</p>
+          <div class="share-buttons">
+            <button class="btn btn-share" id="copyLinkBtn">📋 Copy Link</button>
+            <button class="btn btn-whatsapp" id="whatsappShareBtn">💬 WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CUSTOMIZER MODAL -->
+  <div class="custom-modal-backdrop" id="customModal">
+    <div class="custom-modal-sheet">
+      <div class="modal-header">
+        <h2>🎨 Personalize This Website</h2>
+        <button class="close-modal-btn" id="closeSettingsBtn">&times;</button>
+      </div>
+      <p class="modal-desc">No coding needed! Just fill & save!</p>
+      <div class="form-group">
+        <label>Birthday Person's Name</label>
+        <input type="text" id="cfgName" placeholder="e.g. Priya, Anjali, Riya...">
+      </div>
+      <div class="form-group">
+        <label>Sender Name (From you)</label>
+        <input type="text" id="cfgSender" placeholder="e.g. Aman & Friends">
+      </div>
+      <div class="form-group">
+        <label>Custom Birthday Message</label>
+        <textarea id="cfgLetter" rows="5" placeholder="Write your heartfelt message here..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="resetDefaultsBtn">Reset</button>
+        <button class="btn btn-primary" id="saveSettingsBtn">💾 Save & Apply!</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
